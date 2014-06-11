@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from collections import defaultdict
 import sys, csv
 
 from pluplusch import pluplusch
@@ -64,12 +65,25 @@ catalogs =[
     'https://data.lacity.org',
 ]
 
+def datasets():
+    return pluplusch(catalogs = catalogs, standardize = False)
+
+def url(dataset):
+    return dataset['catalog'] + '/d/' + dataset['id']
+
+def owner(dataset):
+    return dataset['owner']['id']
+
+def owners(datasets):
+    owners = defaultdict(lambda:[])
+    for dataset in datasets:
+        owners[owner(dataset)].append(url(dataset))
+
 def main():
     writer = csv.writer(sys.stdout)
-    writer.writerow(('owner','dataset'))
-    for dataset in pluplusch(catalogs = catalogs, standardize = False):
-        url = dataset['catalog'] + '/d/' + dataset['id']
-        writer.writerow((dataset['owner']['id'], url))
+    writer.writerow(('owner','n.datasets','datasets'))
+    for o, urls in owners(datasets()).items():
+        writer.writerow((o,len(urls),'\n'.join(urls)))
 
 if __name__ == '__main__':
     main()
