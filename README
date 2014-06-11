@@ -7,7 +7,15 @@ are still appropriate contacts for their datasets. They can respond
 with "yes" or "no" or not respond.
 
 
-## Sampling
+## Methods
+The population of owners of public datasets were determined from
+the search endpoints of several Socrata Open Data Portal websites.
+A sample was drawn from within this population, and questionnaires
+were sent to each of them over email.
+
+Responses to the questionnaires are recorded in Nginx server logs
+
+### Sampling
 Run the following command to produce repeated systematic samples
 of dataset owners along the number of datasets per owner.
 
@@ -19,7 +27,20 @@ people, you're finished generating files; if not, you just need
 to split this into a few files, one per person, so that people
 don't accidentally duplicate efforts.
 
-## Contact procedure
+### Configuring the server
+The domain "dataowners.thomaslevine.com" was pointed to Tom's
+virtual server with the [Numb Server Association](https://the-nsa.org).
+On this server, an Nginx server was configured with these properties.
+
+* Listen only on "dataowners.thomaslevine.com".
+* Serve the same [exit page](exit.html) regardless of the HTTP request.
+* Store logs to files specific to the "dataowners.thomaslevine.com"
+    server, as to not confuse it with other domains on the same website.
+
+The resulting logs were versioned in git and periodically pushed to
+public locations.
+
+### Contact procedure
 Once you have one file per person, each person as follows.
 Open the file inside a spreadsheet program. The left column is
 URLs of Socrata-hosted datasets, and the right column is what
