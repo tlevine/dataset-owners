@@ -5,7 +5,7 @@ setup(name='dataset_owners',
       author_email='_@thomaslevine.com',
       description='Dataset owners from Socrata Open Data Catalog',
       url='https://github.com/tlevine/dataset-owners',
-      packages=['pluplusch'],
+      py_modules=['owners'],
       install_requires = [
           'pluplusch>=0.0.7',
       ],
