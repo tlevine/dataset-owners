@@ -1,0 +1,20 @@
+Dear {{fullname}},
+
+My name is Thomas Levine, and I have been studying how governments
+publish data. I am contacting you because you are listed as the
+"dataset owner" for the following
+{{len(datasets)}} dataset{{'s' if len(datasets) > 1 else ''}}.
+
+{{dataset['url'] + '\n' for dataset in datasets}}
+
+If you are still the contact for these datasets, please click on the following link.
+http://dataowners.thomaslevine.com/?person=2hu9eh2runuoe823hplu09uh&owner=yes
+
+If you are no longer the contact or were never the contact, please click on the following link.
+http://dataowners.thomaslevine.com/?person=2hu9eh2runuoe823hplu09uh&owner=no
+
+If you have any questions or comments, please reply to this email.
+
+Thanks
+
+Tom
