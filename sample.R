@@ -20,8 +20,12 @@ random.dataset <- function(datasets) {
   sample(strsplit(datasets, '\n')[[1]], 1)
 }
 
+gethash <- function(salt, userid) {
+  digest(paste0(salt, userid), algo = 'md5')
+}
+
 message <- function(salt, userid, n.datasets, datasets) {
-  hash <- digest(paste0(salt, userid), algo = 'md5')
+  hash <- gethash(salt, userid)
   paste0('My name is Thomas Levine, and I have been studying how governments publish data. I am contacting you because you are listed as the "dataset owner" for the following ',
          if(n.datasets > 1) paste(n.datasets, 'datasets') else 'dataset', '.',
          '\n\n', datasets, '\n\n',
@@ -35,8 +39,18 @@ message <- function(salt, userid, n.datasets, datasets) {
 
 SALT <- Sys.getenv('SALT')
 
+owners <- owners[order(owners$n.datasets),] # Order by number of datasets so that the sampling works.
 set.seed(1112)
-sample <- owners[select(),]
-sample$url <- sapply(sample$datasets, random.dataset, USE.NAMES = FALSE)
-messages <- mapply(message, SALT, sample$owner, sample$n.datasets, sample$datasets, USE.NAMES = FALSE)
+sample <- owners[select(),] # Do the systematic sampling
+sample$url <- sapply(sample$datasets, random.dataset, USE.NAMES = FALSE) # Select one dataset URL per dataset
+messages <- data.frame(
+  dataset = sample$url,
+  message = mapply(message, SALT, sample$owner, sample$n.datasets, sample$datasets, USE.NAMES = FALSE),
+)
+messages$sent <- messages$notes <- ''
+for.analysis <- data.frame(
+  owner.id = sample$owner,
+  owner.hash = mapply(gethash, SALT, sample$owner),
+  n.datasets = sample$n.datasets
+)
 write.csv(messages, file = 'messages.csv', row.names = FALSE)
