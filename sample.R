@@ -26,7 +26,7 @@ message <- function(salt, userid, n.datasets, datasets) {
          if(n.datasets > 1) paste(n.datasets, 'datasets') else 'dataset', '.',
          '\n\n', datasets, '\n\n',
          'I would like to know whether you are the person I should contact about this dataset.\n\n',
-         'If you are still the contact for these datasets, please click on the following link.\n',
+         'If you are still the contact, please click on the following link.\n',
          'http://dataowners.thomaslevine.com/?owner=yes&person=', hash, '\n\n',
          'If you are no longer the contact or never were the contact, please click on the following link.\n',
          'http://dataowners.thomaslevine.com/?owner=yes&person=', hash, '\n\n',
