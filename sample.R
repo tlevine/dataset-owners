@@ -5,16 +5,6 @@ library(digest)
 if (!('owners' %in% ls())) {
   owners <- read.csv('owners.csv', stringsAsFactors = FALSE)
 }
-N <- nrow(owners)
-n <- 32
-n.samples <- 4
-
-select <- function() {
-  interval <- N/n
-  offsets <- sample(1:interval, n.samples, replace = FALSE)
-  walls <- cumsum(rep(interval, n)) - interval
-  Reduce(function(x,offset){c(x,walls+offset)}, offsets, c())
-}
 
 random.dataset <- function(datasets) {
   sample(strsplit(datasets, '\n')[[1]], 1)
@@ -40,14 +30,21 @@ message <- function(salt, userid, n.datasets, datasets) {
 SALT <- Sys.getenv('SALT')
 
 owners <- owners[order(owners$n.datasets),] # Order by number of datasets so that the sampling works.
+
+n <- 256
+
+# Do the systematic sampling
 set.seed(1112)
-sample <- owners[select(),] # Do the systematic sampling
+s <- UPsystematic(inclusionprobabilities(owners$n.datasets,n))
+
+sample <- owners[s == 1,]
 sample$url <- sapply(sample$datasets, random.dataset, USE.NAMES = FALSE) # Select one dataset URL per dataset
 messages <- data.frame(
   dataset = sample$url,
-  message = mapply(message, SALT, sample$owner, sample$n.datasets, sample$datasets, USE.NAMES = FALSE),
+  message = mapply(message, SALT, sample$owner, sample$n.datasets, sample$datasets, USE.NAMES = FALSE)
 )
 messages$sent <- messages$notes <- ''
+
 for.analysis <- data.frame(
   owner.id = sample$owner,
   owner.hash = mapply(gethash, SALT, sample$owner),
