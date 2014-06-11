@@ -1,4 +1,7 @@
+#!/usr/bin/env Rscript
 library(sampling)
+library(digest)
+
 if (!('owners' %in% ls())) {
   owners <- read.csv('owners.csv', stringsAsFactors = FALSE)
 }
@@ -17,7 +20,23 @@ random.dataset <- function(datasets) {
   sample(strsplit(datasets, '\n')[[1]], 1)
 }
 
+message <- function(salt, userid, n.datasets, datasets) {
+  hash <- digest(paste0(salt, userid), algo = 'md5')
+  paste0('My name is Thomas Levine, and I have been studying how governments publish data. I am contacting you because you are listed as the "dataset owner" for the following ',
+         if(n.datasets > 1) paste(n.datasets, 'datasets') else 'dataset', '.',
+         '\n\n', datasets, '\n\n',
+         'I would like to know whether you are the person I should contact about this dataset.\n\n',
+         'If you are still the contact for these datasets, please click on the following link.\n',
+         'http://dataowners.thomaslevine.com/?owner=yes&person=', hash, '\n\n',
+         'If you are no longer the contact or never were the contact, please click on the following link.\n',
+         'http://dataowners.thomaslevine.com/?owner=yes&person=', hash, '\n\n',
+         'If you have any questions or comments, please send me an email.\n\nThanks')
+}
+
+SALT <- Sys.getenv('SALT')
+
 set.seed(1112)
 sample <- owners[select(),]
 sample$url <- sapply(sample$datasets, random.dataset, USE.NAMES = FALSE)
-paste
+messages <- mapply(message, SALT, sample$owner, sample$n.datasets, sample$datasets, USE.NAMES = FALSE)
+write.csv(messages, file = 'messages.csv', row.names = FALSE)
