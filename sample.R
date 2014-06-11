@@ -4,5 +4,12 @@ if (!('owners' %in% ls())) {
 }
 N <- nrow(owners)
 n <- 32
-n.samples <- 16
-offsets <- sample(1:(N/n), n.samples, replace = FALSE)
+interval <- N/n
+n.samples <- 4
+
+set.seed(1112)
+offsets <- sample(1:interval, n.samples, replace = FALSE)
+
+walls <- cumsum(rep(interval, n)) - interval
+
+sample <- Reduce(function(x,offset){c(x,walls+offset)}, offsets, c())
