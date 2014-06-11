@@ -1,4 +1,5 @@
-import sys
+#!/usr/bin/env python
+import sys, csv
 
 from pluplusch import pluplusch
 
@@ -65,10 +66,10 @@ catalogs =[
 
 def main():
     writer = csv.writer(sys.stdout)
-    writer.writerow('owner','dataset')
+    writer.writerow(('owner','dataset'))
     for dataset in pluplusch(catalogs = catalogs, standardize = False):
         url = dataset['catalog'] + '/d/' + dataset['id']
-        writer.writerow(dataset['owner']['id'], url)
+        writer.writerow((dataset['owner']['id'], url))
 
 if __name__ == '__main__':
     main()
