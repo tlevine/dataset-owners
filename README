@@ -9,3 +9,7 @@ with "yes" or "no" or not respond.
 
 ## Sampling
 Repeated systematic samples along the number of datasets
+
+Run like so.
+
+    SALT=elephant ./sample.R
