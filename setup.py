@@ -11,6 +11,6 @@ setup(name='dataset_owners',
       ],
       scripts = ['owners.py'],
       tests_require = ['nose'],
-      version=__version__,
+      version='0.0.1',
       license='AGPL',
 )
