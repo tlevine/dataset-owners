@@ -13,3 +13,37 @@ Repeated systematic samples along the number of datasets
 Run like so.
 
     SALT=elephant ./sample.R
+
+## Contact procedure
+Run the sampling process listed above. This will produce a file
+called "messagess.csv". If only one person is going to contact
+people, you're finished generating files; if not, you just need
+to split this into a few files, one per person, so that people
+don't accidentally duplicate efforts.
+
+Once you have one file per person, each person as follows.
+Open the file inside a spreadsheet program. The left column is
+URLs of Socrata-hosted datasets, and the right column is what
+should be pasted inside the contact form. Go to that URL,
+click on "About", then "Contact Dataset Owner", and fill out
+the form.
+
+![Clicking on a URL in a spreadsheet]()
+
+![Arriving at the Socrata dataset]()
+
+![Clicking on "About"]()
+
+![Clicking on "Contact Dataset Owner"]()
+
+![Filling out the form]()
+
+The information should be the same for every form
+that you fill out except that the message should change;
+copy the message from the right column of the spreadsheet.
+
+Finally, put something in the empty "sent" column.
+Leave the column blank if you didn't send the message
+(for example, if the form didn't work). You can record
+why you didn't send it in the empty "notes" column.
+
