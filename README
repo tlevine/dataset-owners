@@ -38,11 +38,21 @@ the form.
 ![Filling out the form]()
 
 The information should be the same for every form
-that you fill out except that the message should change;
-copy the message from the right column of the spreadsheet.
+that you fill out except that the message should change.
+Use the following values.
 
-Finally, put something in the empty "sent" column.
-Leave the column blank if you didn't send the message
+Reason: Other (the default)
+Email address: dataowners@thomaslevine.com
+...
+Messsage: Copy this from the second ("message") column of the spreadsheet.
+
+Finally, put anything in the empty "sent" column.
+If you are sending these messages in multiple sittings,
+you might want to record the date and approximate time
+when you sent the message.
+
+If you didn't send the message, leave the "sent" column blank.
 (for example, if the form didn't work). You can record
 why you didn't send it in the empty "notes" column.
 
+## Analysis
