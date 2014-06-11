@@ -75,9 +75,10 @@ def owner(dataset):
     return dataset['owner']['id']
 
 def owners(datasets):
-    owners = defaultdict(lambda:[])
+    x = defaultdict(lambda:[])
     for dataset in datasets:
-        owners[owner(dataset)].append(url(dataset))
+        x[owner(dataset)].append(url(dataset))
+    return x
 
 def main():
     writer = csv.writer(sys.stdout)
