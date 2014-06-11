@@ -47,7 +47,7 @@ catalogs =[
     'https://data.raleighnc.gov',
     'https://finances.worldbank.org',
     'https://data.honolulu.gov',
-    'https://opendata.socrata.com',
+#   'https://opendata.socrata.com',
     'https://data.cityofboston.gov',
     'https://data.ok.gov',
     'https://data.cms.gov',
