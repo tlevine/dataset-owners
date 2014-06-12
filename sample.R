@@ -51,3 +51,4 @@ for.analysis <- data.frame(
   n.datasets = sample$n.datasets
 )
 write.csv(messages, file = 'messages.csv', row.names = FALSE)
+write.csv(for.analysis, file = 'for-analysis.csv', row.names = FALSE)
