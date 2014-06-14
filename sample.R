@@ -30,24 +30,12 @@ message <- function(salt, userid, n.datasets, datasets) {
 SALT <- Sys.getenv('SALT')
 
 owners <- owners[order(owners$n.datasets),] # Order by number of datasets so that the sampling works.
-owners$random.dataset <- sapply(owners$datasets, random.dataset, USE.NAMES = FALSE)
-owners$catalog <- sub('/d/.*', '', owners$random.dataset)
 
 n <- 256
 
 # Do the systematic sampling
 set.seed(1112)
 s <- UPsystematic(inclusionprobabilities(owners$n.datasets,n))
-
-# Do the systematic sampling
-set.seed(1112)
-s.stratified <- strata(owners,
-                       c('catalog'),
-                       25,
-                       method = "systematic",
-                       pik = owners$n.datasets,
-                       description=FALSE)
-
 
 sample <- owners[s == 1,]
 sample$url <- sapply(sample$datasets, random.dataset, USE.NAMES = FALSE) # Select one dataset URL per dataset
