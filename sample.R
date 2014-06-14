@@ -43,7 +43,8 @@ messages <- data.frame(
   dataset = sample$url,
   message = mapply(message, SALT, sample$owner, sample$n.datasets, sample$datasets, USE.NAMES = FALSE)
 )
-messages$sent <- messages$notes <- ''
+messages$sent <- ''
+messages$notes <- ''
 
 for.analysis <- data.frame(
   owner.id = sample$owner,
