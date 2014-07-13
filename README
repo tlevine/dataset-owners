@@ -21,11 +21,9 @@ of dataset owners along the number of datasets per owner.
 
     SALT=elephant ./sample.R
 
-This will produce a file
-called "messagess.csv". If only one person is going to contact
-people, you're finished generating files; if not, you just need
-to split this into a few files, one per person, so that people
-don't accidentally duplicate efforts.
+This will produce a file called "messages.csv".
+I have recorded the `SALT` value that I used and will
+publish it after I've collected the responses.
 
 ### Configuring the server
 The domain "dataowners.thomaslevine.com" was pointed to Tom's
@@ -40,8 +38,9 @@ On this server, an Nginx server was configured with these properties.
 The resulting logs were versioned in git and periodically pushed to
 public locations.
 
+XXX
+
 ### Contact procedure
-Once you have one file per person, each person as follows.
 Open the file inside a spreadsheet program. The left column is
 URLs of Socrata-hosted datasets, and the right column is what
 should be pasted inside the contact form. Go to that URL,
@@ -67,10 +66,11 @@ Email address: dataowners@thomaslevine.com
 ...
 Messsage: Copy this from the second ("message") column of the spreadsheet.
 
-Finally, put anything in the empty "sent" column.
+Finally, write something (anything) in the empty "sent" column.
 If you are sending these messages in multiple sittings,
 you might want to record the date and approximate time
-when you sent the message.
+when you sent the message. But you can also just write something
+like "1" or "yes".
 
 If you didn't send the message, leave the "sent" column blank.
 (for example, if the form didn't work). You can record
