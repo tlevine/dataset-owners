@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 import csv, sys, os, datetime
 
-reader = csv.reader(sys.stdin)
+reader = csv.reader(open('messages.csv','r'))
 writer = csv.writer(sys.stdout)
 
 # Header
 writer.writerow(next(reader))
 
 for row in reader:
-    print(row)
-    dataset, message, sent, _ = row
+    try:
+        dataset, message, sent, _ = row
+    except:
+        sys.stderr.write(str(row))
+        raise
     if sent == '':
-        sys.stderr.write(dataset)
+        sys.stderr.write(dataset + '\n')
         os.system('echo "%s" | xclip')
         input()
         os.system("echo '%s' | xclip" % message)
