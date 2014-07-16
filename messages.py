@@ -7,6 +7,10 @@ writer = csv.writer(sys.stdout)
 # Header
 writer.writerow(next(reader))
 
+def write(info):
+    sys.stderr.write(info + '\n')
+    os.system("echo '%s' | xclip" % info)
+
 for row in reader:
     try:
         dataset, message, sent, _ = row
@@ -14,10 +18,9 @@ for row in reader:
         sys.stderr.write(str(row))
         raise
     if sent == '':
-        sys.stderr.write(dataset + '\n')
-        os.system('echo "%s" | xclip')
+        write(dataset)
         input()
-        os.system("echo '%s' | xclip" % message)
+        write(message)
         notes = input()
         sent = datetime.datetime.now().isoformat()
         newrow = dataset, message, sent, notes
