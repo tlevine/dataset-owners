@@ -51,5 +51,5 @@ for.analysis <- data.frame(
   owner.hash = mapply(gethash, SALT, sample$owner),
   n.datasets = sample$n.datasets
 )
-write.csv(messages, file = 'messages.csv', row.names = FALSE)
-write.csv(for.analysis, file = 'for-analysis.csv', row.names = FALSE)
+write.csv(messages, file = 'data/messages.csv', row.names = FALSE)
+write.csv(for.analysis, file = 'data/for-analysis.csv', row.names = FALSE)
