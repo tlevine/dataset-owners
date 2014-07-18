@@ -61,10 +61,10 @@ The information should be the same for every form
 that you fill out except that the message should change.
 Use the following values.
 
-Reason: Other (the default)
-Email address: dataowners@thomaslevine.com
-...
-Messsage: Copy this from the second ("message") column of the spreadsheet.
+* Reason: Other (the default)
+* Subject: "A visitor has sent you a message about your ... dataset" (the default)
+* Message: Copy this from the second ("message") column of the spreadsheet.
+* Email address: dataowners@thomaslevine.com
 
 Finally, write something (anything) in the empty "sent" column.
 If you are sending these messages in multiple sittings,
