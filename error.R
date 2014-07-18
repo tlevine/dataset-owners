@@ -20,4 +20,4 @@ p1 <- ggplot(m) + aes(x = length, fill = status) + geom_histogram() +
   scale_x_continuous('Number of characters in the message', labels = comma) +
   scale_y_continuous('Number of messages') +
   ggtitle('Is there an undocumented limit on the length of a message?')
-p2 <- p1 + xlim(0, 1e4)
+p2 <- p1 + scale_x_continuous('Number of characters in the message', labels = comma, limits = c(0, 1e4))
