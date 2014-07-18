@@ -2,6 +2,8 @@
 import csv, sys, os, datetime
 
 reader = csv.reader(open('data/messages.csv','r'))
+sent_so_far = set(row[3] != '' for row in csv.reader(open('data/sent-messages.csv'))) if os.path.isfile('data/sent-messages.csv' else set()
+
 out = open('data/sent-messages.csv','w')
 writer = csv.writer(out)
 
@@ -18,7 +20,7 @@ for row in reader:
     except:
         sys.stderr.write(str(row))
         raise
-    if sent == '':
+    if sent not in sent_so_far:
         write(dataset)
         input()
         write(message)
