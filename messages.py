@@ -2,13 +2,15 @@
 import csv, sys, os, datetime
 
 reader = csv.reader(open('data/messages.csv','r'))
-sent_so_far = set(row[3] != '' for row in csv.reader(open('data/sent-messages.csv'))) if os.path.isfile('data/sent-messages.csv' else set()
+sent_so_far = set(row[0] for row in csv.reader(open('data/sent-messages.csv')) if row[3] != '') if os.path.isfile('data/sent-messages.csv') else set()
 
-out = open('data/sent-messages.csv','w')
+wasfile = os.path.isfile('data/sent-messages.csv')
+out = open('data/sent-messages.csv','a')
 writer = csv.writer(out)
 
 # Header
-writer.writerow(next(reader))
+if not wasfile:
+    writer.writerow(next(reader))
 
 def write(info):
     sys.stderr.write(info + '\n')
@@ -20,7 +22,7 @@ for row in reader:
     except:
         sys.stderr.write(str(row))
         raise
-    if sent not in sent_so_far:
+    if dataset not in sent_so_far:
         write(dataset)
         input()
         write(message)
