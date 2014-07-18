@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import csv, sys, os, datetime
 
-reader = csv.reader(open('messages.csv','r'))
+reader = csv.reader(open('data/messages.csv','r'))
 writer = csv.writer(sys.stdout)
 
 # Header
