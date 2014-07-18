@@ -1,4 +1,5 @@
-library(reshape2)
+library(ggplot2)
+library(scales)
 
 m <- read.csv('data/sent-messages.csv', stringsAsFactors = FALSE)
 m$error.sending <- grepl('feedback', m$notes)
@@ -12,3 +13,11 @@ m$status[m$ok] <- 'ok'
 m$status[m$deleted] <- 'deleted'
 m$status[m$page.load] <- 'load.error'
 m$status[m$error.sending] <- 'submit.error'
+
+m$length <- nchar(m$message)
+
+p1 <- ggplot(m) + aes(x = length, fill = status) + geom_histogram() +
+  scale_x_continuous('Number of characters in the message', labels = comma) +
+  scale_y_continuous('Number of messages') +
+  ggtitle('Is there an undocumented limit on the length of a message?')
+p2 <- p1 + xlim(0, 1e4)
