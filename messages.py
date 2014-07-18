@@ -2,7 +2,7 @@
 import csv, sys, os, datetime
 
 reader = csv.reader(open('data/messages.csv','r'))
-sent_so_far = set(row[0] for row in csv.reader(open('data/sent-messages.csv')) if row[3] != '') if os.path.isfile('data/sent-messages.csv') else set()
+sent_so_far = set(row[0] for row in csv.reader(open('data/sent-messages.csv')) if row[2] != '') if os.path.isfile('data/sent-messages.csv') else set()
 
 wasfile = os.path.isfile('data/sent-messages.csv')
 out = open('data/sent-messages.csv','a')
