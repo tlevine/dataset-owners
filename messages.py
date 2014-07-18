@@ -2,7 +2,8 @@
 import csv, sys, os, datetime
 
 reader = csv.reader(open('data/messages.csv','r'))
-writer = csv.writer(open('data/sent-messages.csv','w'))
+out = open('data/sent-messages.csv','w')
+writer = csv.writer(out)
 
 # Header
 writer.writerow(next(reader))
@@ -25,3 +26,4 @@ for row in reader:
         sent = datetime.datetime.now().isoformat()
         newrow = dataset, message, sent, notes
         writer.writerow(newrow)
+        out.flush()
