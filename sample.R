@@ -21,10 +21,10 @@ message <- function(salt, userid, n.datasets, datasets) {
          '\n\n', datasets, '\n\n',
          'I would like to know whether you are the person I should contact about this dataset.\n\n',
          'If you are still the contact, please click on the following link.\n',
-         'http://dataowners.thomaslevine.com/?owner=yes&person=', hash, '\n\n',
+         'http://dataowners.thomaslevine.com/', hash, '/yes\n\n',
          'If you are no longer the contact or never were the contact, please click on the following link.\n',
-         'http://dataowners.thomaslevine.com/?owner=no&person=', hash, '\n\n',
-         'If you have any questions or comments, please send me an email.\n\nThanks')
+         'http://dataowners.thomaslevine.com/', hash, '/no\n\n',
+         'And feel free to email me if you have any questions or comments.\n\nThanks')
 }
 
 SALT <- Sys.getenv('SALT')
