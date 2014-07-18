@@ -23,7 +23,7 @@ message <- function(salt, userid, n.datasets, datasets) {
          'If you are still the contact, please click on the following link.\n',
          'http://dataowners.thomaslevine.com/?owner=yes&person=', hash, '\n\n',
          'If you are no longer the contact or never were the contact, please click on the following link.\n',
-         'http://dataowners.thomaslevine.com/?owner=yes&person=', hash, '\n\n',
+         'http://dataowners.thomaslevine.com/?owner=no&person=', hash, '\n\n',
          'If you have any questions or comments, please send me an email.\n\nThanks')
 }
 
@@ -33,7 +33,7 @@ owners <- owners[order(owners$n.datasets),] # Order by number of datasets so tha
 
 n <- 256
 
-# Do the systematic sampling
+# Do the systematic sampling, weighted by the number of datasets.
 set.seed(1112)
 s <- UPsystematic(inclusionprobabilities(owners$n.datasets,n))
 
