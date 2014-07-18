@@ -19,7 +19,7 @@ message <- function(salt, userid, n.datasets, datasets) {
   paste0('My name is Thomas Levine, and I am studying how governments publish data. I am contacting you because you were listed as the "dataset owner" for the following ',
          if(n.datasets > 1) paste(n.datasets, 'datasets') else 'dataset', '.',
          '\n\n', datasets, '\n\n',
-         'I would like to know whether you are the person I should contact about this dataset.\n\n',
+         'I would like to know whether you are the person I should contact about these datasets.\n\n',
          'If you are still the contact, please go to this web page.\n',
          'http://dataowners.thomaslevine.com/', hash, '/yes\n\n',
          'If you are no longer the contact or never were the contact, please go to this web page.\n',
