@@ -16,7 +16,7 @@ gethash <- function(salt, userid) {
 
 message <- function(salt, userid, n.datasets, datasets) {
   hash <- gethash(salt, userid)
-  paste0('My name is Thomas Levine, and I have been studying how governments publish data. I am contacting you because you are listed as the "dataset owner" for the following ',
+  paste0('My name is Thomas Levine, and I have been studying how governments publish data. I am contacting you because you were listed as the "dataset owner" for the following ',
          if(n.datasets > 1) paste(n.datasets, 'datasets') else 'dataset', '.',
          '\n\n', datasets, '\n\n',
          'I would like to know whether you are the person I should contact about this dataset.\n\n',
