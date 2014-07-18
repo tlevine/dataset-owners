@@ -2,7 +2,7 @@
 import csv, sys, os, datetime
 
 reader = csv.reader(open('data/messages.csv','r'))
-writer = csv.writer(sys.stdout)
+writer = csv.writer(open('data/sent-messages.csv','w'))
 
 # Header
 writer.writerow(next(reader))
