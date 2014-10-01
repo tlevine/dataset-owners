@@ -1,4 +1,9 @@
 #!/usr/bin/env Rscript
+if (!('./data' %in% list.dirs(recursive = FALSE))) {
+  cat('This must be run in the root of the data owners repository.\n')
+  quit(status = 1)
+}
+
 library(sampling)
 library(digest)
 
