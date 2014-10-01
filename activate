@@ -1,0 +1,9 @@
+OLDPATH="$PATH"
+export PATH="$PATH:$PWD"
+
+OLDPS1="$PS1"
+PS1='Data Owners $'
+
+deactivate() {
+  export PATH="$OLDPATH"
+}
