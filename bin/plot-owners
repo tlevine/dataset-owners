@@ -29,8 +29,13 @@ cube$result <- factor(cube$answer, levels = .levels)
 cube$result[is.na(cube$result)] <- ifelse(cube$sent[is.na(cube$result)], 'no response', 'could not send')
 row.names(cube) <- cube$hash
 cube$hash <- cube$answer <- cube$sent <- NULL
+cube$owner.id <- factor(cube$owner.id,
+                        levels = cube$owner.id[order(cube$n.datasets)])
+
+sent <- subset(cube, result != 'could not send')
 
 p1 <- ggplot(cube) +
         aes(x = owner.id, y = n.datasets, fill = result) +
-        stat_identity() +
-        geom_bar()
+        geom_bar(stat = 'identity') +
+        coord_flip() +
+        ylim(0, 100)
