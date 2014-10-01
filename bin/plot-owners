@@ -18,7 +18,14 @@ sent.messages$hash <- str_replace(str_match(sent.messages$message, paste0(DOMAIN
 sent.messages$sent <- sent.messages$notes == ''
 sent.messages$dataset <- sent.messages$message <- sent.messages$notes <- NULL
 
-cube <- merge(merge(owner.responses, data.owners,
-                    by.x = 'hash', by.y = 'owner.hash'),
-              sent.messages[c('hash', 'sent')],
-              by = 'hash')
+cube <- merge(merge(sent.messages[c('hash', 'sent')],
+                    owner.responses,
+                    by = 'hash', all.x = TRUE, all.y = FALSE),
+              data.owners, by.x = 'hash', by.y = 'owner.hash',
+              all.x = TRUE, all.y = FALSE)
+.levels <- c('yes', 'no', 'could not send', 'no response')
+cube$result <- factor(cube$answer, levels = .levels)
+cube$result[is.na(cube$result)] <- ifelse(cube$sent[is.na(cube$result)], 'no response', 'could not send')
+
+#p1 <- ggplot(cube) +
+#        aes(x = owner.id, y = n.datasets, fill = 
