@@ -14,13 +14,9 @@ owner.responses <- read.csv('/tmp/dataowners.csv', stringsAsFactors = TRUE)
 data.owners <- read.csv('data/for-analysis.csv', stringsAsFactors = FALSE)
 
 sent.messages <- read.csv('data/sent-messages.csv', stringsAsFactors = FALSE)
-
-# Remove the only duplicate.
-sent.messages[!(sent.messages$hash == 'babccd6fc133ad7f51fb5ae658f9e051' & !sent.messages$sent),]
-
-# Cleaning up
 sent.messages$hash <- str_replace(str_match(sent.messages$message, paste0(DOMAIN, '([^/]+)'))[,1], DOMAIN, '')
 sent.messages$sent <- sent.messages$notes == '' | grepl('messages.py', sent.messages$notes)
+sent.messages <- sent.messages[!(sent.messages$hash == 'babccd6fc133ad7f51fb5ae658f9e051' & !sent.messages$sent),] # Remove the only duplicate.
 sent.messages$dataset <- sent.messages$message <- sent.messages$notes <- NULL
 
 cube <- merge(merge(sent.messages[c('hash', 'sent')],
@@ -34,5 +30,7 @@ cube$result[is.na(cube$result)] <- ifelse(cube$sent[is.na(cube$result)], 'no res
 row.names(cube) <- cube$hash
 cube$hash <- cube$answer <- cube$sent <- NULL
 
-#p1 <- ggplot(cube) +
-#        aes(x = owner.id, y = n.datasets, fill = 
+p1 <- ggplot(cube) +
+        aes(x = owner.id, y = n.datasets, fill = result) +
+        stat_identity() +
+        geom_bar()
