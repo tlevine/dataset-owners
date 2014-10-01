@@ -1,8 +1,13 @@
+#!/usr/bin/env python3
 import sys
 import re
 import csv
 
 RESPONSE = re.compile(r'.*/([a-z0-9]{32})/(yes|no).*')
+
+if not os.path.isdir('data'):
+    sys.stderr.write('You must run this from the root of the dataset-owners repository.\n')
+    sys.exit()
 
 def parse(log):
     writer = csv.writer(sys.stdout)
