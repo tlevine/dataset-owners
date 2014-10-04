@@ -27,12 +27,13 @@ cube <- merge(merge(sent.messages[c('hash', 'sent')],
 .levels <- c('yes', 'no', 'could not send', 'no response')
 cube$result <- factor(cube$answer, levels = .levels)
 cube$result[is.na(cube$result)] <- ifelse(cube$sent[is.na(cube$result)], 'no response', 'could not send')
+levels(cube$result) <- c('Yes', 'No', 'Could not send', 'No response')
 row.names(cube) <- cube$hash
 cube$hash <- cube$answer <- cube$sent <- NULL
 cube$owner.id <- factor(cube$owner.id,
                         levels = cube$owner.id[order(cube$n.datasets)])
 
-sent <- subset(cube, result != 'could not send')
+sent <- subset(cube, result != 'Could not send')
 
 cube$sent <- cube$result
 levels(cube$sent) <- c('Yes','Yes','Yes','No')
@@ -41,7 +42,9 @@ p1 <- ggplot(cube) + aes(x = sent) + geom_bar() +
         scale_y_continuous('Number of people') +
         ggtitle(paste('Of the',
                       nrow(cube),
-                      'people whom I sampled,\nhow many did I manage to contact?'))
+                      'people whom I sampled,\nI manage to contact',
+                      nrow(sent),
+                      paste0('(', round(100*nrow(sent)/nrow(cube)), '%)')))
 
 p2 <- ggplot(sent) +
         aes(x = owner.id, y = n.datasets, fill = result) +
@@ -54,3 +57,22 @@ p2 <- ggplot(sent) +
                                'people')) +
         scale_y_continuous('Number of datasets that the person owned') +
         scale_fill_discrete('Response')
+
+p3 <- ggplot(sent) + aes(x = n.datasets) + geom_histogram(binwidth = 10) +
+        facet_wrap(~ result, ncol = 1) +
+        scale_x_continuous('Number of datasets') +
+        scale_y_continuous('Number of people with this many datasets that provided this particular response') +
+        ggtitle('People with more datasets tended not to respond.')
+
+# Because it seems that people with more datasets respond differently
+# from people with fewer datasets, we should keep in mind that the 
+# thing I'm about to tell you might only apply to people with few datasets.
+
+
+# I would like to answer this question:
+#
+# > If I contact a dataset owner on a Socrata website, what is the chance
+# > that I will receive a response at all?
+# 
+# > If I contact a dataset owner on a Socrata website, what is the chance
+# > that the person will be the appropriate contact person?
