@@ -34,8 +34,23 @@ cube$owner.id <- factor(cube$owner.id,
 
 sent <- subset(cube, result != 'could not send')
 
-p1 <- ggplot(cube) +
+cube$sent <- cube$result
+levels(cube$sent) <- c('Yes','Yes','Yes','No')
+p1 <- ggplot(cube) + aes(x = sent) + geom_bar() +
+        scale_x_discrete('Did I manage to send the message?') +
+        scale_y_continuous('Number of people') +
+        ggtitle(paste('Of the',
+                      nrow(cube),
+                      'people whom I sampled,\nhow many did I manage to contact?'))
+
+p2 <- ggplot(sent) +
         aes(x = owner.id, y = n.datasets, fill = result) +
         geom_bar(stat = 'identity') +
         coord_flip() +
-        ylim(0, 100)
+        ylim(0, 100) +
+        ggtitle('I asked each of these people whether\nhe or she was the appropriate contact person.') +
+        scale_x_discrete(paste('I contacted these',
+                               nrow(sent),
+                               'people')) +
+        scale_y_continuous('Number of datasets that the person owned') +
+        scale_fill_discrete('Response')
