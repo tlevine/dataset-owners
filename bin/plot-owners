@@ -70,7 +70,7 @@ weighted.mean(sent$result != 'No response', sent$n.datasets)
 mean(sent$result != 'No response')
 # [1] 0.3145161
 
-# Look at sampling::varest
+# Look at sampling::varest and Rasmus's Bayes thing
 
 # If I contact a dataset owner on a Socrata website, what is the chance
 # that I will receive a response at all?
