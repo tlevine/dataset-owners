@@ -71,3 +71,13 @@ mean(sent$result != 'No response')
 # [1] 0.3145161
 
 # Look at sampling::varest
+
+# If I contact a dataset owner on a Socrata website, what is the chance
+# that I will receive a response at all?
+# --> Confidence interval or credible interval of sent$result != 'No response'
+# --> weighted by sent$n.datasets
+
+# If I contact a dataset owner on a Socrata website, what is the chance
+# that the person will be the appropriate contact person?
+# --> Confidence interval or credible interval of sent$result == 'Yes'
+# --> weighted by sent$n.datasets
