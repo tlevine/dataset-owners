@@ -63,3 +63,11 @@ p3 <- ggplot(sent) + aes(x = n.datasets) + geom_histogram(binwidth = 10) +
         scale_x_continuous('Number of datasets') +
         scale_y_continuous('Number of people with this many datasets that provided this particular response') +
         ggtitle('People with more datasets tended not to respond.')
+
+
+weighted.mean(sent$result != 'No response', sent$n.datasets)
+# [1] 0.2923362
+mean(sent$result != 'No response')
+# [1] 0.3145161
+
+# Look at sampling::varest
