@@ -1,0 +1,37 @@
+I would like to answer this question:
+
+> If I contact a dataset owner on a Socrata website, what is the chance
+> that I will receive a response at all?
+
+> If I contact a dataset owner on a Socrata website, what is the chance
+> that the person will be the appropriate contact person?
+
+
+I sent this to that and blah blah
+
+sampling this and that
+
+sent these messages with this program
+
+### Errors sending
+Sending the messages turned out to be more diffucult than I had expected.
+(explain the errors and limits)
+
+## Results
+I'll first discuss what I learned about Socrata's dataset owner contact
+feature. Then, I'll discuss what I learned from the dataset owners once
+I contacted them.
+
+### Socrata
+
+
+
+
+It seems that people with more datasets respond differently
+from people with fewer datasets.
+(That is, there is sampling bias.)
+
+
+
+Thus, we should keep in mind that the 
+thing I'm about to tell you might only apply to people with few datasets.
