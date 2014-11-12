@@ -1,4 +1,10 @@
-I would like to answer this question:
+I once tried contacting the "data owner" for a dataset hosted
+on a Socrata site, and I read that Flowing Data just did too.
+In neither case did we get responses. So what exactly does this
+data owner thing do?
+
+## Questions
+I mainly wanted to answer this.
 
 > If I contact a dataset owner on a Socrata website, what is the chance
 > that I will receive a response at all?
@@ -8,13 +14,97 @@ Secondarily, I am curious as to whether that "owner" is the right person.
 > If I contact a dataset owner on a Socrata website, what is the chance
 > that the person will be the appropriate contact person?
 
+## Methods
+I sent emails to a sample of the data owners asking whether they
+are still appropriate contacts for their datasets. They could respond
+with "yes" or "no". They could also not respond. I checked which ones
+responded, and I came up with some figures related to the above questions.
+
+### Sampling
+XXX
+The population of owners of public datasets were determined from
+the search endpoints of several Socrata Open Data Portal websites.
+A sample was drawn from within this population, and questionnaires
+were sent to each of them over email.
+
+Run the following command to produce repeated systematic samples
+of dataset owners along the number of datasets per owner.
+
+    SALT=elephant ./sample.R
+
+This will produce a file called "messages.csv".
+I have recorded the `SALT` value that I used and will
+publish it after I've collected the responses.
+
 I sent this to that and blah blah
 
 sampling this and that
 
 sent these messages with this program
 
-### Errors sending
+### Configuring the server for receiving responses
+The domain "dataowners.thomaslevine.com" was pointed to Tom's
+virtual server with the [Numb Server Association](https://the-nsa.org).
+On this server, an Nginx server was configured with these properties.
+
+* Listen only on "dataowners.thomaslevine.com".
+* Serve the same [exit page](exit.html) regardless of the HTTP request.
+* Store logs to files specific to the "dataowners.thomaslevine.com"
+    server, as to not confuse it with other domains on the same website.
+
+I backed up the log files periodically and saved the final versions
+after a few weeks.
+
+### Contact procedure
+Open the file inside a spreadsheet program. The left column is
+URLs of Socrata-hosted datasets, and the right column is what
+should be pasted inside the contact form. Go to that URL,
+click on "About", then "Contact Dataset Owner", and fill out
+the form.
+
+![Clicking on a URL in a spreadsheet]()
+
+![Arriving at the Socrata dataset]()
+
+![Clicking on "About"]()
+
+![Clicking on "Contact Dataset Owner"]()
+
+![Filling out the form]()
+
+The information should be the same for every form
+that you fill out except that the message should change.
+Use the following values.
+
+* Reason: Other (the default)
+* Subject: "A visitor has sent you a message about your ... dataset" (the default)
+* Message: Copy this from the second ("message") column of the spreadsheet.
+* Email address: dataowners@thomaslevine.com
+
+Finally, write something (anything) in the empty "sent" column.
+If you are sending these messages in multiple sittings,
+you might want to record the date and approximate time
+when you sent the message. But you can also just write something
+like "1" or "yes".
+
+If you didn't send the message, leave the "sent" column blank.
+(for example, if the form didn't work). You can record
+why you didn't send it in the empty "notes" column.
+
+### Reading server logs
+Server logs were run through the [???]() program, which produced
+a CSV file of two columns: owner hash and response (yes or no).
+
+### Preparation for analysis
+The separate analysis CSV file prepared during the sampling process
+contains the owner hash that is included in the query string in the
+messages sent to the contact form. I used this to join information
+from the search endpoint about the dataset owner to the dataset owner's
+questionnaire response with the program [xXX]().
+
+## Results
+
+### Errors in sending
 Sending the messages turned out to be more diffucult than I had expected.
 (explain the errors and limits)
 
