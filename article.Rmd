@@ -3,9 +3,10 @@ I would like to answer this question:
 > If I contact a dataset owner on a Socrata website, what is the chance
 > that I will receive a response at all?
 
+Secondarily, I am curious as to whether that "owner" is the right person.
+
 > If I contact a dataset owner on a Socrata website, what is the chance
 > that the person will be the appropriate contact person?
-
 
 I sent this to that and blah blah
 
