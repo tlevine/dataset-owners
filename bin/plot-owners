@@ -64,6 +64,9 @@ p3 <- ggplot(sent) + aes(x = n.datasets) + geom_histogram(binwidth = 10) +
         scale_y_continuous('Number of people with this many datasets that provided this particular response') +
         ggtitle('People with more datasets tended not to respond.')
 
+ggsave(filename = 'figures/send-rate.png', plot = p1, width = 8)
+ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8)
+ggsave(filename = 'figures/sampling-bias.png', plot = p3, width = 8)
 
 weighted.mean(sent$result != 'No response', sent$n.datasets)
 # [1] 0.2923362
