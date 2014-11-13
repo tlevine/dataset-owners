@@ -3,7 +3,37 @@ on a Socrata site, and I read that Flowing Data just did too.
 In neither case did we get responses. So what exactly does this
 data owner thing do?
 
-## Questions
+## The Contact Dataset Owner feature
+If you go to a dataset page on a Socrata Open Data Portal website,
+you'll see something like this.
+
+![A Socrata dataset page](example/6jva-hr4v-1.png)
+
+There's an "About" button that opens this screen.
+
+![The "About" button](example/6jva-hr4v-2.png)
+
+Scroll to the bottom, and you'll see "Contact Dataset Owner".
+
+![The "Contact Dataset Owner" button](example/6jva-hr4v-3.png)
+
+Then you can fill out the contact form,
+
+![Filling out the form](example/6jva-hr4v-4.png)
+
+which includes a CAPTCHA.
+
+![The CAPTCHA](example/6jva-hr4v-5.png)
+
+If you submit the form and all goes well, you'll see something like this.
+
+!["The dataset owner has been notified"](example/6jva-hr4v-6.png)
+
+This is the feature that I mentioned in the beginning. Until conducting
+the present study, I had no idea what happens after you submit the form.
+But now I do! Let's find out.
+
+## Questio44
 I mainly wanted to answer this.
 
 > If I contact a dataset owner on a Socrata website, what is the chance
@@ -56,24 +86,19 @@ I backed up the log files periodically and saved the final versions
 after a few weeks.
 
 ### Contact procedure
-This section contains the directions that I wrote to myself for
-contacting all of the dataset owners.
+I wrote a little
+[thingy](http://small.dada.pink/dataset-owners/bin/messages)
+that made it easier for me to contact the owners. This program
+guided me through the whole process of contacting the owners,
+remembering all of the annoying things for me.
 
-Open the file inside a spreadsheet program. The left column is
-URLs of Socrata-hosted datasets, and the right column is what
-should be pasted inside the contact form. Go to that URL,
-click on "About", then "Contact Dataset Owner", and fill out
-the form.
+It checks which owners have been contacted and selects one of
+the owners that hasn't been contacted. It tells me which URL
+to go to and gives me the text to put in the message to the
+dataset owner.
 
-![Clicking on a URL in a spreadsheet]()
 
-![Arriving at the Socrata dataset]()
-
-![Clicking on "About"]()
-
-![Clicking on "Contact Dataset Owner"]()
-
-![Filling out the form]()
+XXX
 
 The information should be the same for every form
 that you fill out except that the message should change.
