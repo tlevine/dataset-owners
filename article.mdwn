@@ -64,24 +64,48 @@ is parametrized by a salt.
 
     SALT=elephant ./sample.R
 
-This produces a file called "messages.csv" with unique identifiers for
-each owner that are chosen based on the salt and the Socrata identifier
-for the owner. I kept the `SALT` value secret, and I can reproduce the
-sampling based on the `SALT` value.
+This produces a file called "messages.csv" containing a record for each
+of the sampled users. Each record contained the URL of a dataset owned
+by the user and the message that I should send to the user. 
 
-I sent this to that and blah blah
+### Messages
+Messages looked like this.
 
-sampling this and that
+    Dear [fullname],
+    
+    My name is Thomas Levine, and I have been studying how governments
+    publish data. I am contacting you because you are listed as the
+    "dataset owner" for the following datasets.
+    
+    https://data.somecity.gov/d/abcd-efgh
+    https://data.somecity.gov/d/ijkl-mnop
+    
+    I would like to know whether you are the person I should contact about these datasets.
+    
+    If you are still the contact, please go to this web page.
+    http://dataowners.thomaslevine.com/astoehusahul982h3cuhose/yes
+    
+    If you are no longer the contact or never were the contact, please go to this web page.
+    http://dataowners.thomaslevine.com/astoehusahul982h3cuhose/no
+    
+    And feel free to email me if you have any questions or comments.
+    
+    Thanks
 
-sent these messages with this program
+The message contained a unique identifiers the user that had been chosen
+as a hash of the salt and the Socrata identifier for the owner. I did this
+so that a hypothetical troublemaker would have difficulty messing with my
+data. I kept the salt value secret, and I can reproduce the sampling based
+on the salt.
 
 ### Configuring the server for receiving responses
-The domain "dataowners.thomaslevine.com" was pointed to Tom's
-virtual server with the [Numb Server Association](https://the-nsa.org).
-On this server, an Nginx server was configured with these properties.
+I pointed the domain "dataowners.thomaslevine.com" was pointed to my
+virtual server at the [Numb Server Association](https://the-nsa.org).
+On this computer, an Nginx server was configured with these properties.
 
 * Listen only on "dataowners.thomaslevine.com".
-* Serve the same [exit page](exit.html) regardless of the HTTP request.
+* Serve the same [exit page](http://small.dada.pink/dataset-owners/exit.html)
+    regardless of the HTTP request.
 * Store logs to files specific to the "dataowners.thomaslevine.com"
     server, as to not confuse it with other domains on the same website.
 
@@ -100,27 +124,20 @@ the owners that hasn't been contacted. It tells me which URL
 to go to and gives me the text to put in the message to the
 dataset owner.
 
+<!-- An image could go here. -->
 
-XXX
+I ran my messages program thingy and went to the URLs that it
+told me to go to. I filled in the following information
 
-The information should be the same for every form
-that you fill out except that the message should change.
-Use the following values.
-
-* Reason: Other (the default)
+* Reason: "Other" (the default)
 * Subject: "A visitor has sent you a message about your ... dataset" (the default)
-* Message: Copy this from the second ("message") column of the spreadsheet.
-* Email address: dataowners@thomaslevine.com
+* Message: Copy this from the output of the message-sending guide program
+* Email address: "dataowners@thomaslevine.com"
 
-Finally, write something (anything) in the empty "sent" column.
-If you are sending these messages in multiple sittings,
-you might want to record the date and approximate time
-when you sent the message. But you can also just write something
-like "1" or "yes".
+and submitted the form.
 
-If you didn't send the message, leave the "sent" column blank.
-(for example, if the form didn't work). You can record
-why you didn't send it in the empty "notes" column.
+I recorded in my little program any unexpected results of the form
+submission (mostly error messages).
 
 ### Reading server logs
 Recall that the server logs record clicks on the "yes" or "no" links
