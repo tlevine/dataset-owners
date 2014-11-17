@@ -158,13 +158,6 @@ Oklahoma's Office of Management and Enterprise Services sent me an
 email saying that my message had been marked as spam, so I counted
 them as not having responded to my contact.
 
-### Preparation for analysis
-The separate analysis CSV file prepared during the sampling process
-contains the owner hash that is included in the query string in the
-messages sent to the contact form. I used this to join information
-from the search endpoint about the dataset owner to the dataset owner's
-questionnaire response.
-
 ## Results
 
 ### Errors in sending
