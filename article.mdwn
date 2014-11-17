@@ -175,6 +175,8 @@ I contacted them.
 
 
 
+* Size limit (I suspect that it's a limit on the number of characters in a database field.)
+* Intended for copyright and privacy issues rather than clarifications on the dataset
 
 It seems that people with more datasets respond differently
 from people with fewer datasets.
