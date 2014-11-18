@@ -174,16 +174,31 @@ Sending the messages turned out to be more diffucult than I had expected.
 (explain the errors and limits)
 
 XXX
+ggsave(filename = 'figures/undocumented-limit.png', plot = p1, width = 8)
+ggsave(filename = 'figures/undocumented-limit-zoomed.png', plot = p2, width = 8)
 
 It seems that people with more datasets respond differently
 from people with fewer datasets.
 (That is, there is sampling bias.)
 
-
+ggsave(filename = 'figures/send-rate.png', plot = p1, width = 8)
+ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8)
+ggsave(filename = 'figures/sampling-bias.png', plot = p3, width = 8)
 
 Thus, we should keep in mind that the 
 thing I'm about to tell you might only apply to people with few datasets.
 
 ### How/whether owners respond
+I need to write this part.
+
+1
+
+> If I contact a dataset owner on a Socrata website, what is the chance
+> that I will receive a response at all?
+
+2
+
+> If I contact a dataset owner on a Socrata website, what is the chance
+> that the person will be the appropriate contact person?
 
 ## Conclusions
