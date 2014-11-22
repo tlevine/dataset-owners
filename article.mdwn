@@ -196,9 +196,22 @@ I need to write this part.
 > If I contact a dataset owner on a Socrata website, what is the chance
 > that I will receive a response at all?
 
+The probability of yes or no (rather than no response) from an owner
+
+The probability of yes or no (rather than no response) from an owner,
+weighted by the number of datasets that the owner owns
+
+
 2
 
 > If I contact a dataset owner on a Socrata website, what is the chance
 > that the person will be the appropriate contact person?
+
+The probability of yes from an owner
+
+The probability of yes from an owner,
+weighted by the number of datasets that the owner owns
+
+
 
 ## Conclusions
