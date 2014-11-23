@@ -36,12 +36,12 @@ But now I do! Let's find out.
 ## Questio44
 I mainly wanted to answer this.
 
-> If I contact a dataset owner on a Socrata website, what is the chance
+> If I contact the owner of a dataset on a Socrata website, what is the chance
 > that I will receive a response at all?
 
 Secondarily, I am curious as to whether that "owner" is the right person.
 
-> If I contact a dataset owner on a Socrata website, what is the chance
+> If I contact the owner of a dataset on a Socrata website, what is the chance
 > that the person will be the appropriate contact person?
 
 ## Methods
@@ -189,7 +189,13 @@ Thus, we should keep in mind that the
 thing I'm about to tell you might only apply to people with few datasets.
 
 ### How/whether owners respond
-I need to write this part.
+Recall that I had two questions.
+
+1. If I contact a dataset owner on a Socrata website, what is the chance
+    that I will receive a response at all?
+2. If I contact a dataset owner on a Socrata website, what is the chance
+    that the person will be the appropriate contact person?
+
 
 1
 
@@ -211,6 +217,51 @@ The probability of yes from an owner
 
 The probability of yes from an owner,
 weighted by the number of datasets that the owner owns
+
+
+
+### Were people who owned many datasets different from people who owned few
+Recall that I weighted my sample towards owners with lots of datasets.
+I did this because I suspected that people with lots of datasets would be
+different from people with few datasets. I wanted to estimate the response
+rate by dataset rather than by owner. (I was interested in the experience
+that someone consuming the data would have.) This is why the above statistics
+are all weighted by the number of datasets that an owner owns.
+
+A side effect of this manner of sampling is that I can check whether owners
+with many datasets were different from owners with few datasets. Below is
+a plot to this effect.
+
+XXX p4 goes here
+
+Each dot is a dataset owner. Its horizontal position is randomly chosen,
+its vertical position corresponds to the number of datasets the owner owned,
+and its color corresponds to whether the owner responded to my contact.
+The squigly shapes in the back are violin plots, which are like smoothed
+versions of the points.
+
+The shapes of the two sides of the plots are sort of similar but also sort
+of different. Based on the plot, I'd guess that there probably is a small
+difference in whether an owner responds depending on whether the owner has
+many or few datasets.
+
+We can get a fancier result with a logistic regression of whether the
+owner responded (She either did or didn't.) on the number of datasets the
+owner owned.
+
+XXX m4 goes here.
+
+Given how many owners I contacted, the term for the number of datasets
+(XXX) isn't large enough that we should guess that there truely is some
+difference in response rates based on the number of datasets an owner owns.
+Said more fancy-like, the *p*-value for the slope (rather than intercept)
+term is above our conventional *&alpha;* of 0.05.
+
+It turned out that people with lots of datasets were quite similar to
+people with few datasets, so I have similar answers to both of the research
+questions.
+
+
 
 
 
