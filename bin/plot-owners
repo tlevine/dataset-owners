@@ -7,6 +7,7 @@ if (!('./data' %in% list.dirs(recursive = FALSE))) {
 library(ggplot2)
 library(scales)
 library(stringr)
+library(survey)
 
 DOMAIN = 'http://dataowners.thomaslevine.com/'
 
@@ -81,6 +82,13 @@ m4 <- glm(response ~ n.datasets, data = sent, family = 'binomial')
 # wtd.var(sent$response, sent$n.datasets)
 # [1] 0.2109635
 
+d <- svydesign(~1, data = sent, weight = sent$n.datasets)
+
+svymean(~response == 'Yes', d)
+mean(sent$response == 'Yes')
+
+svyciprop(~response == 'Yes', d)
+t.test(sent$response == 'Yes')
 
 
 # mean(sent$response)
