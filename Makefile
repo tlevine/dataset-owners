@@ -6,4 +6,4 @@ plots: /tmp/dataowners.csv
 
 /tmp/dataowners.csv:
 	./bin/log-parser > /tmp/dataowners.csv
-	sed '1 d' data/email-responses-hash.csv > /tmp/dataowners.csv
+	sed '1 d' data/email-responses-hash.csv >> /tmp/dataowners.csv
