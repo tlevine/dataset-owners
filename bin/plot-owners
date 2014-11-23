@@ -66,7 +66,6 @@ p3 <- ggplot(sent) + aes(x = n.datasets) + geom_histogram(binwidth = 10) +
 
 sent$response <- factor(sent$result != 'No response', levels = c(TRUE, FALSE))
 levels(sent$response) <- c('Yes', 'No')
-
 p4 <- ggplot(sent) +
   aes(y = n.datasets, x = response, color = response) +
   geom_violin() + geom_jitter() +
@@ -74,17 +73,17 @@ p4 <- ggplot(sent) +
   ylab('Number of datasets the owner owns') +
   xlab('Did the owner respond?') +
   ggtitle('Whether owners respond and how many datasets they own')
-print(p4)
 
-weighted.mean(sent$result != 'No response', sent$n.datasets)
+m4 <- glm(response ~ n.datasets, data = sent, family = 'binomial')
+
+weighted.mean(sent$response, sent$n.datasets)
 # [1] 0.2923362
-wtd.var(sent$result != 'No response', sent$n.datasets)
+wtd.var(sent$response, sent$n.datasets)
 # [1] 0.2109635
-m <- glm(sent$result != 'No response' ~ sent$n.datasets, family = 'binomial')
 
 
 
-mean(sent$result != 'No response')
+mean(sent$response)
 # [1] 0.3145161
 
 # Look at sampling::varest and Rasmus's Bayes thing
