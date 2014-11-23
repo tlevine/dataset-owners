@@ -76,14 +76,14 @@ p4 <- ggplot(sent) +
 
 m4 <- glm(response ~ n.datasets, data = sent, family = 'binomial')
 
-weighted.mean(sent$response, sent$n.datasets)
+# weighted.mean(sent$response, sent$n.datasets)
 # [1] 0.2923362
-wtd.var(sent$response, sent$n.datasets)
+# wtd.var(sent$response, sent$n.datasets)
 # [1] 0.2109635
 
 
 
-mean(sent$response)
+# mean(sent$response)
 # [1] 0.3145161
 
 # Look at sampling::varest and Rasmus's Bayes thing

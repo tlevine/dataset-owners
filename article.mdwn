@@ -254,15 +254,12 @@ XXX m4 goes here.
 Given how many owners I contacted, the term for the number of datasets
 (XXX) isn't large enough that we should guess that there truely is some
 difference in response rates based on the number of datasets an owner owns.
-Said more fancy-like, the *p*-value for the slope (rather than intercept)
-term is above our conventional *&alpha;* of 0.05.
+Said more fancy-like, the *p*-value for the slope term (0.3919) is much
+larger than our conventional *&alpha;* of 0.05, so we do not reject the
+null hypothesis that the number of datasets an owner owns has nothing to
+do with whether the owner responds.
 
-It turned out that people with lots of datasets were quite similar to
-people with few datasets, so I have similar answers to both of the research
-questions.
-
-
-
-
+To summarize, people with many datasets seem to respond at about the same
+rate as people with few datasets.
 
 ## Conclusions
