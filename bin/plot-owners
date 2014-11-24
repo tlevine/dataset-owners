@@ -77,10 +77,6 @@ p4 <- ggplot(sent) +
 
 m4 <- glm(response ~ n.datasets, data = sent, family = 'binomial')
 
-# weighted.mean(sent$response, sent$n.datasets)
-# [1] 0.2923362
-# wtd.var(sent$response, sent$n.datasets)
-# [1] 0.2109635
 
 d.weighted <- svydesign(~1, data = sent, weight = sent$n.datasets)
 d.unweighted <- svydesign(~1, data = sent, weight = ~1)
@@ -114,7 +110,7 @@ p6 <- p.error + geom_errorbar(data = data6) +
 
 data7 <- rbind(data5[1,], data6[1,])
 data7$x <- c('(1) Chance of a response', '(2) Chance of a "Yes"')
-p7 <- p.error +
+p7 <- p.error + geom_errorbar(data = data7) +
   scale_x_discrete('Research question') +
   ggtitle('Answers to the research questions') +
   scale_y_continuous('Estimated chance', labels = percent, limits = 0:1)
