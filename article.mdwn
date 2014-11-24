@@ -169,14 +169,62 @@ I contacted them.
 * Size limit (I suspect that it's a limit on the number of characters in a database field.)
 * Intended for copyright and privacy issues rather than clarifications on the dataset
 
-### Errors in sending
-Sending the messages turned out to be more diffucult than I had expected.
-(explain the errors and limits)
+### Errors
+Sending the messages turned out to be more difficult than I had expected.
+Whenever an error occurred, I recorded that the error happened and then either
+tried again or moved on. I tried again more at the beginning; by the end,
+I had gotten pretty good at predicting whether an error would go away if I
+tried again.
 
-XXX
-ggsave(filename = 'figures/undocumented-limit.png', plot = p1, width = 8)
-ggsave(filename = 'figures/undocumented-limit-zoomed.png', plot = p2, width = 8)
+#### Simple errors
+In some cases, the page didn't load.
 
+![Everything loads on the dataset page except for the dataset](errors/hmyf-5wkk.png)
+
+In other cases, the dataset had apparently been deleted between the time when
+I assembled my list of all datasets and when I finally sent the messages.
+
+#### Errors in sending
+Most of the errors were things that I categorized as errors in sending the message.
+
+In two cases, the CAPTCHA didn't show up.
+
+![Contact-Owner form without a CAPTCHA](errors/ezaq-2pxp-1.png)
+
+I submitted the form anyway, but I was told that I hadn't filled out
+the CAPTCHA properly (because I hadn't).
+
+![Contact-Owner form without a CAPTCHA](errors/ezaq-2pxp-1.png)
+
+In most of the other cases, the problem was less clear. I got messages like
+this one.
+
+![There was an error sending feedback for this dataset. Please retry later.](errors/twfr-p4s4.png)
+
+If I looked more closely at what was going on in the webpage, I saw things
+like this.
+
+![500 Error](errors/inspect-error-1.png)
+
+That is, the XML HTTP request received a response with a status of 500,
+indicating that something had gone wrong in the server.
+
+![HTML returned from the 500 error](errors/inspect-error-3.png)
+
+The body of the response was some HTML that says that the page is "unavailable".
+
+#### Possible reason for the majority of errors
+Errors in sending were happening a lot, and I was getting the feeling that
+long messages were more likely to produce errors. After I had finished attempting
+
+<img src="figures/undocumented-limit.png"
+     alt="Is there an undocumented limit on the length of a message?" />
+
+<img src="figures/undocumented-limit-zoomed.png"
+     alt="Previous plot zoomed in, showing an increase around 5000 characters at the rate of errors" />
+
+
+### Sampling bias introduced by the errors in sending
 It seems that people with more datasets respond differently
 from people with fewer datasets.
 (That is, there is sampling bias.)
@@ -217,10 +265,15 @@ We can get a fancier result with a logistic regression of whether the
 owner responded (She either did or didn't.) on the number of datasets the
 owner owned.
 
-XXX m4 goes here.
+    glm(formula = response ~ n.datasets, family = "binomial", data = sent)
+
+    Coefficients:
+                Estimate Std. Error z value Pr(>|z|)  
+    (Intercept) 0.543654   0.264629   2.054   0.0399
+    n.datasets  0.006386   0.007459   0.856   0.3919  
 
 Given how many owners I contacted, the term for the number of datasets
-(XXX) isn't large enough that we should guess that there truely is some
+(`n.datasets`) isn't large enough that we should guess that there truely is some
 difference in response rates based on the number of datasets an owner owns.
 Said more fancy-like, the *p*-value for the slope term (0.3919) is much
 larger than our conventional *&alpha;* of 0.05, so we do not reject the
