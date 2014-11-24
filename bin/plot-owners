@@ -82,33 +82,15 @@ m4 <- glm(response ~ n.datasets, data = sent, family = 'binomial')
 # wtd.var(sent$response, sent$n.datasets)
 # [1] 0.2109635
 
-ci.df <- function(ci) {
-  y <- as.vector(confint(ci))
-  data.frame(
-    x = 0,
-    y = mean(ci),
-    ymin = y[1],
-    ymax = y[2]
-  )
-}
 d <- svydesign(~1, data = sent, weight = sent$n.datasets)
 
 svymean(~response == 'Yes', d)
 mean(sent$response == 'Yes')
 
-ci5 <- svyciprop(~response == 'Yes', d, level = 0.95)
 t.test(sent$response == 'Yes')
-
-p5 <- ggplot(ci.df(ci5)) +
-  aes(x = x, y = y, ymin = ymin, ymax = ymax) +
-  scale_y_continuous('Chance of response', label = percent) +
-  xlab('') + ggplot2::ylim(0,1) +
-  geom_errorbar()
-
-# mean(sent$response)
-# [1] 0.3145161
-
-# Look at sampling::varest and Rasmus's Bayes thing
+ci5 <- svyciprop(~response == 'Yes', d, level = 0.95)
+bounds <- confint(ci5)
+maximum.likelihood <- mean(ci5)
 
 # If I contact a dataset owner on a Socrata website, what is the chance
 # that I will receive a response at all?
