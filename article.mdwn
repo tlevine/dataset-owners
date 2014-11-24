@@ -253,7 +253,7 @@ the sampling strategy differently in the
 The first of the strategies is less meaningful and more easy to explain.
 It assumes a simple random sample from an infinite population of data owners.
 
-    d.unweighted <- svydesign(~1, data = sent)
+    d.unweighted <- svydesign(~1, data = sent, weight = ~1)
 
 Then I ran the following command to come up with a confidence interval for
 the estimated proportion, where `x` was the sample data.
