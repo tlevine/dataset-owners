@@ -158,13 +158,8 @@ Oklahoma's Office of Management and Enterprise Services sent me an
 email saying that my message had been marked as spam, so I counted
 them as not having responded to my contact.
 
-## Results
-I'll first discuss what I learned about Socrata's dataset owner contact
-feature. Then, I'll discuss what I learned from the dataset owners once
-I contacted them.
-
-### Socrata product things
-
+## Things I learned about Socrata Open Data Portal
+I learned a lot of things about Socrata's dataset owner contact feature.
 
 * Size limit (I suspect that it's a limit on the number of characters in a database field.)
 * Intended for copyright and privacy issues rather than clarifications on the dataset
@@ -229,66 +224,11 @@ length is low enough to that longer messages won't be allowed in the database.
 Recall that you are supposed to enter a "*Short* Message" into the box. Maybe
 this is why!
 
-### Sampling bias introduced by the errors in sending
-
-
-It seems that people with more datasets respond differently
-from people with fewer datasets.
-(That is, there is sampling bias.)
-
-ggsave(filename = 'figures/send-rate.png', plot = p1, width = 8)
-ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8)
-ggsave(filename = 'figures/sampling-bias.png', plot = p3, width = 8)
-
-Thus, we should keep in mind that the 
-thing I'm about to tell you might only apply to people with few datasets.
-
-### Were people who owned many datasets different from people who owned few
-Recall that I weighted my sample towards owners with lots of datasets.
-I did this because I suspected that people with lots of datasets would be
-different from people with few datasets. I wanted to estimate the response
-rate by dataset rather than by owner. (I was interested in the experience
-that someone consuming the data would have.) This is why the above statistics
-are all weighted by the number of datasets that an owner owns.
-
-A side effect of this manner of sampling is that I can check whether owners
-with many datasets were different from owners with few datasets. Below is
-a plot to this effect.
-
-XXX p4 goes here
-
-Each dot is a dataset owner. Its horizontal position is randomly chosen,
-its vertical position corresponds to the number of datasets the owner owned,
-and its color corresponds to whether the owner responded to my contact.
-The squigly shapes in the back are violin plots, which are like smoothed
-versions of the points.
-
-The shapes of the two sides of the plots are sort of similar but also sort
-of different. Based on the plot, I'd guess that there probably is a small
-difference in whether an owner responds depending on whether the owner has
-many or few datasets.
-
-We can get a fancier result with a logistic regression of whether the
-owner responded (She either did or didn't.) on the number of datasets the
-owner owned.
-
-    glm(formula = response ~ n.datasets, family = "binomial", data = sent)
-
-    Coefficients:
-                Estimate Std. Error z value Pr(>|z|)  
-    (Intercept) 0.543654   0.264629   2.054   0.0399
-    n.datasets  0.006386   0.007459   0.856   0.3919  
-
-Given how many owners I contacted, the term for the number of datasets
-(`n.datasets`) isn't large enough that we should guess that there truely is some
-difference in response rates based on the number of datasets an owner owns.
-Said more fancy-like, the *p*-value for the slope term (0.3919) is much
-larger than our conventional *&alpha;* of 0.05, so we do not reject the
-null hypothesis that the number of datasets an owner owns has nothing to
-do with whether the owner responds.
-
-To summarize, people with many datasets seem to respond at about the same
-rate as people with few datasets.
+## Results
+I'm almost at the point where I discuss what I learned from the dataset owners
+once I contacted them. I'll provide my answers to the research questions and
+then comment on the sampling bias that the came out of the errors in sending
+the messages.
 
 ### How/whether owners respond
 Recall that there were three possible outcomes for each owner
@@ -369,6 +309,71 @@ In this second question, I instead estimate the proportion of owners that
 fall into the "yes" group only, rather than owners who fall into either
 of the "no" or "no response" groups. This result was thus lower than the
 result for the first question.
+
+
+
+### Sampling bias introduced by the errors in sending
+As we saw above, I had much more difficulty sending messages to people with
+more datasets. As such, my sample was no longer representative
+(mathematically) of my original population.
+
+It seems that people with more datasets respond differently
+from people with fewer datasets.
+(That is, there is sampling bias.)
+
+ggsave(filename = 'figures/send-rate.png', plot = p1, width = 8)
+ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8)
+ggsave(filename = 'figures/sampling-bias.png', plot = p3, width = 8)
+
+Thus, we should keep in mind that the 
+thing I'm about to tell you might only apply to people with few datasets.
+
+### Were people who owned many datasets different from people who owned few
+Recall that I weighted my sample towards owners with lots of datasets.
+I did this because I suspected that people with lots of datasets would be
+different from people with few datasets. I wanted to estimate the response
+rate by dataset rather than by owner. (I was interested in the experience
+that someone consuming the data would have.) This is why the above statistics
+are all weighted by the number of datasets that an owner owns.
+
+A side effect of this manner of sampling is that I can check whether owners
+with many datasets were different from owners with few datasets. Below is
+a plot to this effect.
+
+XXX p4 goes here
+
+Each dot is a dataset owner. Its horizontal position is randomly chosen,
+its vertical position corresponds to the number of datasets the owner owned,
+and its color corresponds to whether the owner responded to my contact.
+The squigly shapes in the back are violin plots, which are like smoothed
+versions of the points.
+
+The shapes of the two sides of the plots are sort of similar but also sort
+of different. Based on the plot, I'd guess that there probably is a small
+difference in whether an owner responds depending on whether the owner has
+many or few datasets.
+
+We can get a fancier result with a logistic regression of whether the
+owner responded (She either did or didn't.) on the number of datasets the
+owner owned.
+
+    glm(formula = response ~ n.datasets, family = "binomial", data = sent)
+
+    Coefficients:
+                Estimate Std. Error z value Pr(>|z|)  
+    (Intercept) 0.543654   0.264629   2.054   0.0399
+    n.datasets  0.006386   0.007459   0.856   0.3919  
+
+Given how many owners I contacted, the term for the number of datasets
+(`n.datasets`) isn't large enough that we should guess that there truely is some
+difference in response rates based on the number of datasets an owner owns.
+Said more fancy-like, the *p*-value for the slope term (0.3919) is much
+larger than our conventional *&alpha;* of 0.05, so we do not reject the
+null hypothesis that the number of datasets an owner owns has nothing to
+do with whether the owner responds.
+
+To summarize, people with many datasets seem to respond at about the same
+rate as people with few datasets.
 
 
 ## Conclusions
