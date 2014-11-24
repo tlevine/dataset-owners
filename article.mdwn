@@ -188,38 +188,6 @@ ggsave(filename = 'figures/sampling-bias.png', plot = p3, width = 8)
 Thus, we should keep in mind that the 
 thing I'm about to tell you might only apply to people with few datasets.
 
-### How/whether owners respond
-Recall that I had two questions.
-
-1. If I contact a dataset owner on a Socrata website, what is the chance
-    that I will receive a response at all?
-2. If I contact a dataset owner on a Socrata website, what is the chance
-    that the person will be the appropriate contact person?
-
-
-1
-
-> If I contact a dataset owner on a Socrata website, what is the chance
-> that I will receive a response at all?
-
-The probability of yes or no (rather than no response) from an owner
-
-The probability of yes or no (rather than no response) from an owner,
-weighted by the number of datasets that the owner owns
-
-
-2
-
-> If I contact a dataset owner on a Socrata website, what is the chance
-> that the person will be the appropriate contact person?
-
-The probability of yes from an owner
-
-The probability of yes from an owner,
-weighted by the number of datasets that the owner owns
-
-
-
 ### Were people who owned many datasets different from people who owned few
 Recall that I weighted my sample towards owners with lots of datasets.
 I did this because I suspected that people with lots of datasets would be
@@ -261,5 +229,59 @@ do with whether the owner responds.
 
 To summarize, people with many datasets seem to respond at about the same
 rate as people with few datasets.
+
+### How/whether owners respond
+Recall that I had two questions.
+
+1. If I contact a dataset owner on a Socrata website, what is the chance
+    that I will receive a response at all?
+2. If I contact a dataset owner on a Socrata website, what is the chance
+    that the person will be the appropriate contact person?
+
+Recall, further, that there were three possible outcomes for each owner
+that I successfully contacted.
+
+1. The owner did not respond. Let's abbreviate this as "no-response".
+2. The owner said that she or he was the appropriate contact person.
+    Let's abbreviate this as "yes".
+3. The owner said that she or he was *not* the appropriate contact person.
+    Let's abbreviate this as "no".
+
+In order to answer the two research questions above, I imagined that I was
+going to send a message to all of the owners (not just 124 of them), and I
+tried to predict how many would respond in a particular way.
+
+I first estimated the proportion of the remaining owners that fall into
+
+    d.weighted <- svydesign(~1, data = sent, weight = sent$n.datasets)
+    d.unweighted <- svydesign(~1, data = sent)
+
+#### How many respond at all
+For the first question, I estimated the proportion of
+
+
+1
+
+> If I contact a dataset owner on a Socrata website, what is the chance
+> that I will receive a response at all?
+
+The probability of yes or no (rather than no response) from an owner
+
+The probability of yes or no (rather than no response) from an owner,
+weighted by the number of datasets that the owner owns
+
+
+#### How many say yes
+
+2
+
+> If I contact a dataset owner on a Socrata website, what is the chance
+> that the person will be the appropriate contact person?
+
+The probability of yes from an owner
+
+The probability of yes from an owner,
+weighted by the number of datasets that the owner owns
+
 
 ## Conclusions
