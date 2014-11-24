@@ -223,8 +223,15 @@ long messages were more likely to produce errors. After I had finished attemptin
 <img src="figures/undocumented-limit-zoomed.png"
      alt="Previous plot zoomed in, showing an increase around 5000 characters at the rate of errors" />
 
+Here's my guess as to what is going on. The messages are compressed and then
+stored in a relational database in a VARCHAR column. This column's maximum
+length is low enough to that longer messages won't be allowed in the database.
+Recall that you are supposed to enter a "*Short* Message" into the box. Maybe
+this is why!
 
 ### Sampling bias introduced by the errors in sending
+
+
 It seems that people with more datasets respond differently
 from people with fewer datasets.
 (That is, there is sampling bias.)
