@@ -65,14 +65,17 @@ p2 <- ggplot(sent) +
         scale_fill_discrete('Response') +
         annotate('rect', xmin = area.legend.x - area.legend.height / 2,
                          xmax = area.legend.x + area.legend.height / 2,
-                         ymin = area.legend.y + area.legend.width / 2,
-                         ymax = area.legend.y + area.legend.width / 2,
+                         ymin = area.legend.y,
+                         ymax = area.legend.y + area.legend.width,
                          fill = 'white') +
         annotate('rect', xmin = area.legend.x - .5,
                          xmax = area.legend.x + .5,
-                         ymin = area.legend.y - .5,
-                         ymax = area.legend.y + .5) +
-        annotate('text', x = , y = 55, label = 'One dataset')
+                         ymin = 2 + area.legend.y - .5,
+                         ymax = 2 + area.legend.y + .5) +
+        annotate('text', x = area.legend.x + 5,
+                         y = area.legend.y,
+                         position = 1,
+                         label = 'One dataset')
 
 p3 <- ggplot(sent) + aes(x = n.datasets) + geom_histogram(binwidth = 10) +
         facet_wrap(~ result, ncol = 1) +
