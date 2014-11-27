@@ -47,20 +47,19 @@ p1 <- ggplot(cube) + aes(x = sent) + geom_bar() +
                       nrow(sent),
                       paste0('(', round(100*nrow(sent)/nrow(cube)), '%)')))
 
-area.legend.x <- 13
+area.legend.x <- 35
 area.legend.y <- 50
 area.legend.width <- 25
-area.legend.height <- 5
+area.legend.height <- 8
 p2 <- ggplot(sent) +
         theme(legend.position = 'bottom') +
         aes(x = owner.id, y = n.datasets, fill = result) +
         geom_bar(stat = 'identity') +
         coord_flip() +
         ylim(0, 100) +
-        ggtitle('I asked each of these people whether\nhe or she was the appropriate contact person.') +
-        scale_x_discrete(paste('I contacted these',
-                               nrow(sent),
-                               'people')) +
+        ggtitle(paste('I asked each of', nrow(sent),
+                      'people whether\nhe or she was the appropriate contact person.')) +
+        scale_x_discrete('Each bar is a person.', breaks = c()) +
         scale_y_continuous('Number of datasets that the person owned') +
         scale_fill_discrete('Response') +
         annotate('rect', xmin = area.legend.x - area.legend.height / 2,
@@ -70,11 +69,12 @@ p2 <- ggplot(sent) +
                          fill = 'white') +
         annotate('rect', xmin = area.legend.x - .5,
                          xmax = area.legend.x + .5,
-                         ymin = 2 + area.legend.y - .5,
-                         ymax = 2 + area.legend.y + .5) +
-        annotate('text', x = area.legend.x + 5,
-                         y = area.legend.y,
-                         position = 1,
+                         ymin = 4 + area.legend.y - .5,
+                         ymax = 4 + area.legend.y + .5) +
+        annotate('text', x = area.legend.x + .3,
+                         y = 7 + area.legend.y,
+                         hjust = 0,
+                         size = 4,
                          label = 'One dataset')
 
 p3 <- ggplot(sent) + aes(x = n.datasets) + geom_histogram(binwidth = 10) +
@@ -133,10 +133,13 @@ p7 <- p.error + geom_errorbar(data = data7) +
   ggtitle('Answers to the research questions') +
   scale_y_continuous('Estimated chance', labels = percent, limits = 0:1)
 
-ggsave(filename = 'figures/send-rate.png', plot = p1, width = 8)
-ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8, height = 10)
-ggsave(filename = 'figures/sampling-bias.png', plot = p3, width = 8, height = 10)
-ggsave(filename = 'figures/responsiveness-and-ownership.png', plot = p4, width = 8)
-ggsave(filename = 'figures/question-1.png', plot = p5, width = 8)
-ggsave(filename = 'figures/question-2.png', plot = p6, width = 8)
-ggsave(filename = 'figures/answers.png', plot = p7, width = 8)
+  ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8, height = 10)
+main <- function() {
+  ggsave(filename = 'figures/send-rate.png', plot = p1, width = 8)
+  ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8, height = 10)
+  ggsave(filename = 'figures/sampling-bias.png', plot = p3, width = 8, height = 10)
+  ggsave(filename = 'figures/responsiveness-and-ownership.png', plot = p4, width = 8)
+  ggsave(filename = 'figures/question-1.png', plot = p5, width = 8)
+  ggsave(filename = 'figures/question-2.png', plot = p6, width = 8)
+  ggsave(filename = 'figures/answers.png', plot = p7, width = 8)
+}
