@@ -472,7 +472,10 @@ by accident and thus don't respond very quickly.
 Are you looking for information about a dataset? On one hand, you might be
 disappointed to learn that you probably won't get a response if you use the
 dataset owner contact thingy. On the other hand, it's not like this feature
-is broken
+is broken; people sometimes do respond, so it's worth a shot.
 
-contact thingy to ask a question about a dataset, and this unresponsiveness
-might relate to the design of the dataset owner contact thing
+I suspect that there's misunderstanding by the public as to how this feature
+should be used. If you are publishing data but do not want people to ask
+questions about it, I suggest against including a feature like this.
+If you want this feature for your own internal use, consider enabling it
+only for your own staff or at least noting that it's only for internal use.
