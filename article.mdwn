@@ -465,6 +465,16 @@ They are
 * Personal Information
 * Other
 
+These all seem to be about corrections to the dataset, and there might be a
+very clear process as to how to handle all of these. You might evaluate whether
+the concern is valid and then update or remove the dataset.
+The process of answering a question about a dataset might be very different.
+
+It could be that the feature was designed for a common process of correcting
+the data and that the people who were making these corrections had different
+intuitions about how the system would work and thus wouldn't have the
+difficulties that I had seen.
+
 ### Turning off the owner contact thingy
 It might also be that some institutions use this feature more than others
 and that it is hard to turn this feature off even if you
