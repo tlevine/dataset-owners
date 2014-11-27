@@ -134,7 +134,6 @@ p7 <- p.error + geom_errorbar(data = data7) +
   ggtitle('Answers to the research questions') +
   scale_y_continuous('Estimated chance', labels = percent, limits = 0:1)
 
-  ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8, height = 10)
 main <- function() {
   ggsave(filename = 'figures/send-rate.png', plot = p1, width = 8)
   ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8, height = 10)
@@ -143,4 +142,5 @@ main <- function() {
   ggsave(filename = 'figures/question-1.png', plot = p5, width = 8)
   ggsave(filename = 'figures/question-2.png', plot = p6, width = 8)
   ggsave(filename = 'figures/answers.png', plot = p7, width = 8)
+  dev.off()
 }
