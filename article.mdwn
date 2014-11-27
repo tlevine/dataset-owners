@@ -237,7 +237,7 @@ I'll go into much more detail in the following sections about these two
 concerns, but the following plot says almost everything that the longer
 sections below say.
 
-ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8)
+![](figures/how-many-datasets.png)
 
 In this plot, each data owner is represented as a bar, and each dataset is
 represented as a section of the bar; bars are longer for data owners who own
