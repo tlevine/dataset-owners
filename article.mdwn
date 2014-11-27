@@ -33,7 +33,7 @@ This is the feature that I mentioned in the beginning. Until conducting
 the present study, I had no idea what happens after you submit the form.
 But now I do! Let's find out.
 
-## Questio44
+## Questions
 I mainly wanted to answer this.
 
 > If I contact the owner of a dataset on a Socrata website, what is the chance
@@ -79,6 +79,7 @@ Messages looked like this.
     
     https://data.somecity.gov/d/abcd-efgh
     https://data.somecity.gov/d/ijkl-mnop
+    ...
     
     I would like to know whether you are the person I should contact about these datasets.
     
@@ -425,4 +426,4 @@ result for the first question.
 
 ## Conclusions
 
-figures/answers.png
+![](figures/answers.png)
