@@ -236,8 +236,24 @@ sections below say.
 
 ggsave(filename = 'figures/how-many-datasets.png', plot = p2, width = 8)
 
-In this plot, each dataset is represented as a section of the bar; bars
-are longer
+In this plot, each data owner is represented as a bar, and each dataset is
+represented as a section of the bar; bars are longer for data owners who own
+more datasets. The color of the bar indicates whether the particular owner
+responded to my message with a
+"yes", (indicating that she was the appropriate contact person),
+responded with a "no (indicating that she was not the appropriate person),
+or did not respond.
+
+We can assess whether the response is associated with the number of datasets
+by looking at whether bars change color as we move up and down the plot.
+If response is associated with the number of datasets, we should see more
+red bars in one section of the plot than in another section of the plot.
+If response isn't associated, the colors of the bars should alternate with
+no apparent trend. I see more red bars in the middle of the plot than on
+the top and bottom, so this association might exist. I'm not really sure though.
+
+More interestingly, we can assess the likelihood of getting a particular
+respose to your message.
 
 ### Sampling bias introduced by the errors in sending
 As we saw above, I had much more difficulty sending messages to people with
@@ -305,17 +321,18 @@ to the left are much taller than the bars to the right. Also, hardly
 anyone wound up in the middle plot (the "no" group).
 
 Now let's put those three observations together: If an owner responded,
-the owner probably responded with "yes". And the rate of response was
-higher for owners who owned few datasets.
+the owner probably responded with "yes". And the rate of response might
+be a bit higher for owners who owned few datasets.
 
-It seems that people with more datasets respond differently from people
+I don't have a very clear answer either way, but it seems sort of like
+people with more datasets respond differently from people
 with fewer datasets. Because of this, we should keep in mind that the 
 thing I'm about to tell you about the chance of response to a message
 to an owner might only apply to people with few datasets.
 
 More specifically, I am going to report figures about the chance that
 you will receive a response if you use the data owner contact feature,
-and I'm guessing that that figure should be lower if the data owner
+and I'm guessing that that figure would be a bit lower if the data owner
 whom you contact owns many many datasets.
 
 ### How/whether owners respond
