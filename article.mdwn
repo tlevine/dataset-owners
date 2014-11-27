@@ -449,10 +449,11 @@ quite a lot of difficulty in sending the messages. Why is it so inconvenient?
 ### Intent of the owner contact thingy
 I think that this owner contact thingy was never intended to be used to
 ask questions about a dataset and that people are using it for that purpose
-anyway. 
+anyway.
 
-![]()
-XXX
+When I sent the messages to the sample of owners,
+
+![](example/purpose-cropped.png)
 
 ### Turning off the owner contact thingy
 It might also be that some institutions use this feature more than others
