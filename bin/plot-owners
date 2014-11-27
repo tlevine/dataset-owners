@@ -85,6 +85,7 @@ p3 <- ggplot(sent) + aes(x = n.datasets) + geom_histogram(binwidth = 10) +
 
 sent$response <- factor(sent$result != 'No response', levels = c(TRUE, FALSE))
 levels(sent$response) <- c('Yes', 'No')
+set.seed(6466297)
 p4 <- ggplot(sent) +
   aes(y = n.datasets, x = response, color = response) +
   geom_violin() + geom_jitter() +
