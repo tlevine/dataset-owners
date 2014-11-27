@@ -47,6 +47,10 @@ p1 <- ggplot(cube) + aes(x = sent) + geom_bar() +
                       nrow(sent),
                       paste0('(', round(100*nrow(sent)/nrow(cube)), '%)')))
 
+area.legend.x <- 13
+area.legend.y <- 50
+area.legend.width <- 25
+area.legend.height <- 5
 p2 <- ggplot(sent) +
         theme(legend.position = 'bottom') +
         aes(x = owner.id, y = n.datasets, fill = result) +
@@ -58,7 +62,17 @@ p2 <- ggplot(sent) +
                                nrow(sent),
                                'people')) +
         scale_y_continuous('Number of datasets that the person owned') +
-        scale_fill_discrete('Response')
+        scale_fill_discrete('Response') +
+        annotate('rect', xmin = area.legend.x - area.legend.height / 2,
+                         xmax = area.legend.x + area.legend.height / 2,
+                         ymin = area.legend.y + area.legend.width / 2,
+                         ymax = area.legend.y + area.legend.width / 2,
+                         fill = 'white') +
+        annotate('rect', xmin = area.legend.x - .5,
+                         xmax = area.legend.x + .5,
+                         ymin = area.legend.y - .5,
+                         ymax = area.legend.y + .5) +
+        annotate('text', x = , y = 55, label = 'One dataset')
 
 p3 <- ggplot(sent) + aes(x = n.datasets) + geom_histogram(binwidth = 10) +
         facet_wrap(~ result, ncol = 1) +
