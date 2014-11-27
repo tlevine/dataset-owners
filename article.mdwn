@@ -253,7 +253,13 @@ no apparent trend. I see more red bars in the middle of the plot than on
 the top and bottom, so this association might exist. I'm not really sure though.
 
 More interestingly, we can assess the likelihood of getting a particular
-respose to your message.
+respose to your message. The likelihood of getting any response at all is
+the proportion of the colored area that is red ("yes") or green ("no").
+Most of the colored area is  blue, however, and this suggests that you
+probably won't get a response if you try to contact the owner of a particular
+dataset. Furthermore, there is much more red than green, and this suggests
+that the person who responds, if you do get a response, will be an appropriate
+person for asking questions about the dataset.
 
 ### Sampling bias introduced by the errors in sending
 As we saw above, I had much more difficulty sending messages to people with
