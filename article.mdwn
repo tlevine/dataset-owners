@@ -451,9 +451,19 @@ I think that this owner contact thingy was never intended to be used to
 ask questions about a dataset and that people are using it for that purpose
 anyway.
 
-When I sent the messages to the sample of owners,
+When I sent the messages to the sample of owners, I specified that the
+reason for my contact was "Other". Let's look at the other reasons that
+are available.
 
 ![](example/purpose-cropped.png)
+
+They are 
+
+* Copyright Violation
+* Offensive Content
+* Spam or Junk
+* Personal Information
+* Other
 
 ### Turning off the owner contact thingy
 It might also be that some institutions use this feature more than others
